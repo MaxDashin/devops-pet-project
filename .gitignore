@@ -2,3 +2,6 @@ venv/
 pycache/
 *.pyc
 .env
+get-docker.sh
+kubectl
+minikube-linux-amd64
