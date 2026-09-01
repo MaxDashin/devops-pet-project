@@ -1,0 +1,16 @@
+stages: [lint, test, build]
+
+lint:
+  stage: lint
+  image: python:3.12-slim
+  script:
+    - pip install flake8
+    - flake8 app/ --max-line-length=100 || true
+
+build:
+  stage: build
+  image: docker:24
+  services: [docker:24-dind]
+  script:
+    - docker build -t todo-app:$CI_COMMIT_SHORT_SHA ./app
+  only: [main]
