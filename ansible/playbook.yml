@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt: { update_cache: true }
+
+    - name: Install curl
+      apt:
+        name: curl
+        state: present
